@@ -11,15 +11,13 @@ const getTicksRange = () => {
   return ranges;
 };
 
-export async function getActiveLiquidityByTick(
-  tickInput: bigint | number | string
-) {
+export async function fetchAndSaveActiveLiquidities(filename: string) {
   const initializedTicks = new SortedMap<number, TickInfo>((a, b) => a - b);
-  const tick = Number(tickInput);
   const ticksRange = getTicksRange();
   const tickInfoList: Array<{ tick: number; info: TickInfo }> = [];
   for (const t of ticksRange) {
-    const info = await getTickInfo(tick);
+    console.log("Fetching ", t);
+    const info = await getTickInfo(t);
     if (!info) {
       console.log(`System failed to fetch tick info for ${t}`);
       throw new Error("Something went wrong");
