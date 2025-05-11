@@ -1,0 +1,8 @@
+{
+	"author": "Ali Rajabi Nekoo",
+	"dependencies": {
+		"viem": "^2.29.2",
+		"@types/node": "^22.15.17",
+		"typescript": "^5.8.3"
+	}
+}
