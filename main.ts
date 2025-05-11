@@ -1,7 +1,7 @@
 import { fetchAndSaveActiveLiquidities } from "./scripts/active-liquidity";
 
 async function main() {
-  await fetchAndSaveActiveLiquidities("activeLiquidities");
+  await fetchAndSaveActiveLiquidities("activeLiquidities.json");
 }
 
 main()

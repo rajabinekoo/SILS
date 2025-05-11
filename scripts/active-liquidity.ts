@@ -26,5 +26,5 @@ export async function fetchAndSaveActiveLiquidities(filename: string) {
     tickInfoList.push({ tick: t, info });
   }
   for (const { info, tick } of tickInfoList) initializedTicks.add(tick, info);
-  await writeFile("test.json", initializedTicks.toJSON(), "utf8");
+  await writeFile(filename, initializedTicks.toJSON(), "utf8");
 }
