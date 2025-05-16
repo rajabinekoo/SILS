@@ -2,7 +2,7 @@ import { Address } from "viem";
 
 import { UniswapV3Pool } from "../abis/UniswapV3Pool";
 import { TickInfo, viemTickInfoType } from "../dtos/tick-info";
-import { poolAddress, publicClient, startBlock } from "../libs/config";
+import { poolAddress, publicClient, blockNumber } from "../libs/config";
 
 export async function getTickInfo(tick: number | bigint | string) {
   try {
@@ -11,7 +11,7 @@ export async function getTickInfo(tick: number | bigint | string) {
       abi: UniswapV3Pool.abi,
       functionName: "ticks",
       args: [BigInt(tick)],
-      blockNumber: startBlock,
+      blockNumber: blockNumber,
     });
     return new TickInfo(<viemTickInfoType>tickInfo);
   } catch (error) {

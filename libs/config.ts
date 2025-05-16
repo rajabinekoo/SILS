@@ -1,27 +1,38 @@
 import { arbitrum } from "viem/chains";
 import { createPublicClient, fallback, http } from "viem";
 
-export const nonfungiblePositionManagerAddress =
-  "0xC36442b4a4522E871399CD717aBDD847Ab11FE88";
-export const usdc = "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8";
-export const weth = "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1";
-export const poolAddress = "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640";
-export const tickSpacing = 10;
-export const int24Max = 8388607;
-export const int24Min = -8388608;
-export const startBlock = 21001766n;
-export const stopBlock = 22241703n;
+import { Slot0 } from "../dtos/slot0";
+import { Token } from "@uniswap/sdk-core";
 
-// export const rpcUrls = [
-//   "https://arb-pokt.nodies.app",
-//   "https://api.zan.top/arb-one",
-//   "https://arbitrum.meowrpc.com",
-//   "https://arbitrum.rpc.subquery.network/public",
-//   "https://arbitrum-one.public.blastapi.io",
-//   "https://arbitrum.drpc.org",
-//   "https://rpc.therpc.io/arbitrum",
-//   "https://arb1.lava.build",
-// ];
+export const debugLog: boolean = true;
+
+export const fee = 500; // 0.05%
+export const tickSpacing = 10;
+export const blockNumber = 21001766n;
+export const liquidity = 9900281548745306000n;
+export const poolAddress = "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640";
+export const slot0: Slot0 = {
+  sqrtPriceX96: "1540717895191862348349788195884637",
+  tick: "197518",
+  observationIndex: "48",
+  observationCardinality: "723",
+  observationCardinalityNext: "723",
+  feeProtocol: "0",
+  unlocked: true,
+};
+
+export const USDC = new Token(
+  1,
+  "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+  6,
+  "USDC"
+);
+export const WETH = new Token(
+  1,
+  "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+  18,
+  "WETH"
+);
 
 export const rpcUrls = [
   "https://eth.llamarpc.com",

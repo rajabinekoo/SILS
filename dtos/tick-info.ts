@@ -30,3 +30,12 @@ export class TickInfo {
     this.initialized = data[7];
   }
 }
+
+export class TickInfoWithinActiveLiquidity extends TickInfo {
+  activeLiquidity0: bigint = 0n;
+  activeLiquidity1: bigint = 0n;
+
+  constructor(data: viemTickInfoType) {
+    super(data);
+  }
+}

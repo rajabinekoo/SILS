@@ -1,17 +1,16 @@
-import { Slot0, viemSlot0Type } from "../dtos/slot0";
 import { UniswapV3Pool } from "../abis/UniswapV3Pool";
 import { poolAddress, publicClient, blockNumber } from "../libs/config";
 
-export async function getSlot0Status() {
+export async function getPoolLiquidity() {
   try {
-    const slot0Data = await publicClient.readContract({
+    const l = await publicClient.readContract({
       address: poolAddress,
       abi: UniswapV3Pool.abi,
-      functionName: "slot0",
+      functionName: "liquidity",
       args: [],
-      blockNumber: blockNumber
+      blockNumber: blockNumber,
     });
-    return new Slot0(<viemSlot0Type>slot0Data);
+    return Number(l);
   } catch (error) {
     console.error(error);
     return null;

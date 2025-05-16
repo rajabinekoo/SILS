@@ -52,6 +52,14 @@ export class SortedMap<T, V> {
     return index !== -1 ? this.values[index] : undefined;
   }
 
+  public getItemAndValueByIndex(
+    index: number
+  ): [T, V] | [undefined, undefined] {
+    const item = this.items[index];
+    if (!item) return [undefined, undefined];
+    return [item, this.values[index]];
+  }
+
   public size(): number {
     return this.items.length;
   }
@@ -70,5 +78,11 @@ export class SortedMap<T, V> {
       j[this.items[index]] = this.values[index];
     }
     return JSON.stringify(j);
+  }
+
+  public fromJSON(data: string, formatKey = (d: any) => d): void {
+    const parsedJson: any = JSON.parse(data);
+    for (const item in parsedJson)
+      this.add(formatKey(item), <V>parsedJson[item]);
   }
 }
