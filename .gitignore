@@ -3,3 +3,4 @@ dataset.csv
 notes.txt
 *.json
 v3-core
+**/node_modules

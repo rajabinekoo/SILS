@@ -4,6 +4,7 @@
 		"@types/node": "^22.15.17",
 		"@uniswap/sdk-core": "^7.7.2",
 		"@uniswap/v3-sdk": "^3.25.2",
+		"duckdb": "^1.2.1",
 		"jsbi": "3.2.5",
 		"typescript": "^5.8.3",
 		"viem": "^2.29.2"

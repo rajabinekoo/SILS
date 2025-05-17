@@ -2,15 +2,15 @@ import { parseUnits } from "viem";
 
 import { USDC, WETH } from "./libs/config";
 import { ArtificialPool } from "./scripts/artificial-pool";
+import { Actions } from "./scripts/actions";
+import { Game } from "./scripts/game";
 
 async function main() {
   const pool = new ArtificialPool(USDC, WETH, "activeLiquidities.json");
-  const priceImpact = await pool.calcPriceImpact(
-    USDC,
-    WETH,
-    parseUnits("100", USDC.decimals).toString()
-  );
-  console.log(`Price Impact: ${priceImpact}%`);
+  const actions = new Actions("dataset.csv");
+  const game = new Game(actions, pool);
+  const piAvg = await game.calcAvgPriceImpact();
+  console.log(piAvg);
 }
 
 main()
